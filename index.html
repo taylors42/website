@@ -3,66 +3,101 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Taylor Ferreira - Software Developer</title>
+    <title>Taylor Ferreira - .NET Developer</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
         :root {
-            --primary-color: #1a73e8;
-            --text-color: #202124;
-            --background-color: #ffffff;
-            --section-bg: #f8f9fa;
+            --vs-purple: #68217a;
+            --vs-blue: #0078d4;
+            --vs-dark-blue: #00188f;
+            --vs-light-blue: #5c2d91;
+            --vs-background: #1e1e1e;
+            --vs-text: #d4d4d4;
+            --vs-comment: #57a64a;
+            --vs-string: #d69d85;
+            --vs-keyword: #569cd6;
+            --card-bg: #252526;
+            --header-bg: #2d2d2d;
+            --card-hover: #333333;
+            --card-border: #3e3e42;
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Cascadia Code', 'Consolas', monospace;
         }
 
         body {
-            background-color: var(--background-color);
-            color: var(--text-color);
+            background-color: var(--vs-background);
+            color: var(--vs-text);
             line-height: 1.6;
         }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 24px;
         }
 
         header {
-            padding: 100px 0;
-            text-align: center;
-            background-color: var(--section-bg);
+            padding: 80px 0;
+            background: var(--header-bg);
+            position: relative;
+            border-bottom: 4px solid var(--vs-blue);
+        }
+
+        header::before {
+            content: '/* .NET Developer */';
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            color: var(--vs-comment);
+            font-style: italic;
         }
 
         .profile-title {
             font-size: 2.5rem;
-            margin-bottom: 10px;
-            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: var(--vs-keyword);
         }
 
         .profile-subtitle {
             font-size: 1.5rem;
-            color: #5f6368;
-            margin-bottom: 20px;
+            color: var(--vs-string);
+            margin-bottom: 24px;
+        }
+
+        .location {
+            color: var(--vs-comment);
+            margin-top: 12px;
         }
 
         .contact-info {
             display: flex;
-            justify-content: center;
             gap: 20px;
-            margin-top: 20px;
+            margin-top: 32px;
+            flex-wrap: wrap;
         }
 
         .contact-info a {
-            color: var(--primary-color);
+            color: var(--vs-text);
             text-decoration: none;
             display: flex;
             align-items: center;
-            gap: 5px;
+            gap: 8px;
+            padding: 8px 16px;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .contact-info a:hover {
+            background: var(--vs-blue);
+            border-color: var(--vs-blue);
         }
 
         section {
@@ -71,47 +106,92 @@
 
         .section-title {
             font-size: 2rem;
-            margin-bottom: 30px;
-            color: var(--primary-color);
+            margin-bottom: 40px;
+            color: var(--vs-keyword);
+            border-bottom: 2px solid var(--vs-blue);
+            padding-bottom: 10px;
+            position: relative;
+        }
+
+        .section-title::before {
+            content: 'public class';
+            position: absolute;
+            top: -20px;
+            left: 0;
+            color: var(--vs-comment);
+            font-size: 0.9rem;
         }
 
         .experience-card {
-            background: white;
-            border-radius: 8px;
-            padding: 25px;
-            margin-bottom: 20px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 4px;
+            padding: 24px;
+            margin-bottom: 24px;
+            transition: all 0.3s ease;
+        }
+
+        .experience-card:hover {
+            background: var(--card-hover);
+            border-color: var(--vs-blue);
         }
 
         .experience-title {
-            font-size: 1.25rem;
-            color: var(--primary-color);
-            margin-bottom: 10px;
+            font-size: 1.3rem;
+            color: var(--vs-keyword);
+            margin-bottom: 12px;
         }
 
         .experience-company {
-            font-weight: 500;
-            color: #5f6368;
-            margin-bottom: 15px;
+            color: var(--vs-string);
+            margin-bottom: 8px;
+        }
+
+        .experience-date {
+            color: var(--vs-comment);
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+        }
+
+        .project-title {
+            color: var(--vs-light-blue);
+            margin: 20px 0 12px;
+            font-size: 1.1rem;
+            border-left: 3px solid var(--vs-blue);
+            padding-left: 10px;
         }
 
         .skills-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin-top: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
         }
 
         .skill-category {
-            background: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            background: var(--card-bg);
+            padding: 24px;
+            border: 1px solid var(--card-border);
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .skill-category:hover {
+            background: var(--card-hover);
+            border-color: var(--vs-blue);
         }
 
         .skill-category h3 {
-            color: var(--primary-color);
-            margin-bottom: 15px;
+            color: var(--vs-keyword);
+            margin-bottom: 16px;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .skill-category h3::before {
+            content: '//';
+            color: var(--vs-comment);
         }
 
         .skill-list {
@@ -123,120 +203,268 @@
             display: flex;
             align-items: center;
             gap: 8px;
+            color: var(--vs-text);
         }
 
         .skill-list li::before {
-            content: "•";
-            color: var(--primary-color);
+            content: "→";
+            color: var(--vs-blue);
         }
 
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
+        code {
+            font-family: 'Cascadia Code', 'Consolas', monospace;
+            color: var(--vs-string);
         }
 
-        .project-card {
-            background: white;
-            border-radius: 8px;
-            padding: 25px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        /* Tablets and smaller desktops */
+        @media (max-width: 1024px) {
+            .container {
+                padding: 0 16px;
+            }
+
+            .skills-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 16px;
+            }
+
+            .profile-title {
+                font-size: 2rem;
+            }
+
+            .profile-subtitle {
+                font-size: 1.2rem;
+            }
         }
 
-        .project-title {
-            color: var(--primary-color);
-            margin-bottom: 15px;
-            font-size: 1.25rem;
+        /* Tablets */
+        @media (max-width: 768px) {
+            header {
+                padding: 60px 0;
+            }
+
+            .contact-info {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 12px;
+            }
+
+            .contact-info a {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .section-title {
+                font-size: 1.75rem;
+            }
+
+            .experience-card {
+                padding: 20px;
+            }
+
+            .skill-category {
+                padding: 20px;
+            }
         }
 
-        .project-description {
-            margin-bottom: 15px;
+        /* Large phones */
+        @media (max-width: 640px) {
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .profile-title {
+                font-size: 1.75rem;
+                padding: 0 10px;
+            }
+
+            .contact-info {
+                grid-template-columns: 1fr;
+            }
+
+            .experience-title {
+                font-size: 1.2rem;
+            }
+
+            .project-title {
+                font-size: 1rem;
+            }
+        }
+
+        /* Small phones */
+        @media (max-width: 480px) {
+            header {
+                padding: 40px 0;
+            }
+
+            .profile-title {
+                font-size: 1.5rem;
+            }
+
+            .profile-subtitle {
+                font-size: 1rem;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+
+            .experience-card {
+                padding: 16px;
+            }
+
+            .skill-category {
+                padding: 16px;
+            }
+
+            .skill-list li {
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Ensure minimum content padding */
+        @media (max-width: 320px) {
+            .container {
+                padding: 0 12px;
+            }
+
+            .profile-title {
+                font-size: 1.25rem;
+            }
+        }
+
+        /* Visual Studio-style scrollbar */
+        ::-webkit-scrollbar {
+            width: 14px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--vs-background);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #424242;
+            border: 3px solid var(--vs-background);
+            border-radius: 7px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #4f4f4f;
         }
     </style>
 </head>
 <body>
     <header>
         <div class="container">
-            <h1 class="profile-title">Taylor S. Ferreira</h1>
-            <h2 class="profile-subtitle">Software Developer | Back-end Specialist</h2>
+            <h1 class="profile-title">class TaylorFerreira : IDotNetDeveloper</h1>
+            <h2 class="profile-subtitle">// Software Developer | Back-end Specialist</h2>
+            <p class="location"><i class="fas fa-map-marker-alt"></i> São Paulo</p>
             <div class="contact-info">
-                <a href="mailto:otaylorferreira78@gmail.com" target="_blank"><i class="fas fa-envelope"></i> Email</a>
+                <a href="mailto:otaylorferreira78@gmail.com"><i class="fas fa-envelope"></i> Email</a>
                 <a href="https://github.com/taylors42" target="_blank"><i class="fab fa-github"></i> GitHub</a>
-                <a href="tel:+5511936185142"><i class="fas fa-phone"></i> (11) 93618-5142</a>
-                <a href="https://www.linkedin.com/in/taylors42/" target="_blank"><i class="fab fa-linkedin-in"></i>Linkedin</a>
+                <a href="https://www.linkedin.com/in/taylors42/" target="_blank"><i class="fab fa-linkedin-in"></i> LinkedIn</a>
             </div>
         </div>
     </header>
 
     <section id="experience">
         <div class="container">
-            <h2 class="section-title">Professional Experience</h2>
+            <h2 class="section-title">Experience</h2>
             <div class="experience-card">
-                <h3 class="experience-title">.NET Developer</h3>
-                <p class="experience-company">Geosiga - Inteligência em gestão de frotas | Jan 2024 - Present</p>
+                <h3 class="experience-title">public class DotNetDeveloper</h3>
+                <p class="experience-company">GeoSIGA - Inteligência em gestão de frotas</p>
+                <p class="experience-date"><i class="far fa-calendar-alt"></i> February 2018 - February 2020</p>
+                
+                <h4 class="project-title">// Service Order Management System</h4>
                 <ul class="skill-list">
-                    <li>Developed and maintained enterprise applications using C#, .NET and ASP.NET(MVC)</li>
-                    <li>Led strategic product development using MVP and POC approaches</li>
-                    <li>Created automation bots for Teams/Telegram & WhatsApp</li>
-                    <li>Enhanced and maintained legacy systems</li>
+                    <li>Engineered and implemented a digital solution to replace paper-based processes, incorporating custom business rules validation</li>
+                    <li>Built automated system integrations and ETL processes, transforming manual operations into efficient automated workflows</li>
+                    <li>Developed a complete data validation system ensuring data integrity across service orders</li>
+                </ul>
+
+                <h4 class="project-title">// WhatsApp Integration System</h4>
+                <ul class="skill-list">
+                    <li>Developed an automated WhatsApp bot system for field technicians enabling independent installation procedures</li>
+                    <li>Implemented real-time API integrations and webhooks for seamless system communication</li>
+                    <li>Created telemetry and logging systems for monitoring installation metrics and performance analysis</li>
+                </ul>
+
+                <h4 class="project-title">// System Support and Optimization</h4>
+                <ul class="skill-list">
+                    <li>Led technical support initiatives for internal teams and external clients</li>
+                    <li>Implemented system improvements based on performance analysis and user feedback</li>
+                    <li>Developed and maintained integration systems between multiple business services</li>
+                </ul>
+            </div>
+
+            <div class="experience-card">
+                <h3 class="experience-title">public class ITAdministration</h3>
+                <p class="experience-company">Microcamp</p>
+                <p class="experience-date"><i class="far fa-calendar-alt"></i> February 2018 - February 2020</p>
+                <ul class="skill-list">
+                    <li>Designed and implemented network architectures including TCP/IP protocols, VLAN configuration, and routing protocols</li>
+                    <li>Developed expertise in network security, including firewall configuration, VPN setup, and security policies</li>
+                    <li>Configured and managed Windows Server environments, Active Directory, and Group Policy</li>
+                    <li>Hands-on experience with system virtualization using VMware and network simulation tools</li>
                 </ul>
             </div>
         </div>
     </section>
 
-    <section id="skills" style="background-color: var(--section-bg);">
+    <section id="skills">
         <div class="container">
-            <h2 class="section-title">Technical Skills</h2>
+            <h2 class="section-title">Skills</h2>
             <div class="skills-grid">
                 <div class="skill-category">
-                    <h3>Languages</h3>
+                    <h3>Backend Development</h3>
                     <ul class="skill-list">
-                        <li>C#</li>
+                        <li>C# & .NET</li>
+                        <li>ASP.NET MVC</li>
                         <li>Python</li>
-                        <li>Golang</li>
-                        <li>Javascript/Typescript</li>
                         <li>Node.js</li>
-                    </ul>
-                </div>
-                <div class="skill-category">
-                    <h3>Backend</h3>
-                    <ul class="skill-list">
-                        <li>ASP.NET (MVC)</li>
-                        <li>Dotnet</li>
-                        <li>Docker</li>
-                        <li>Entity Framework</li>
+                        <li>Golang</li>
                         <li>FastAPI</li>
                         <li>Flask</li>
                     </ul>
                 </div>
                 <div class="skill-category">
-                    <h3>DevOps & Tools</h3>
+                    <h3>Data & Database</h3>
                     <ul class="skill-list">
-                        <li>Linux</li>
-                        <li>Bash</li>
-                        <li>Docker</li>
-                        <li>CI/CD</li>
-                        <li>Azure</li>
+                        <li>SQL Server</li>
+                        <li>PostgreSQL</li>
+                        <li>ETL</li>
+                        <li>Entity Framework</li>
+                        <li>Data Pipeline Development</li>
                     </ul>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="projects">
-        <div class="container">
-            <h2 class="section-title">Featured Projects</h2>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <h3 class="project-title">Service Order Management System</h3>
-                    <p class="project-description">
-                        Modernized legacy system implementation for Geosiga featuring multi-user concurrent operations,
-                        streamlined task execution, and enhanced cross-departmental efficiency.
-                    </p>
+                <div class="skill-category">
+                    <h3>DevOps & Infrastructure</h3>
                     <ul class="skill-list">
-                        <li>Successful migration within two-week timeline</li>
-                        <li>Improved operational efficiency</li>
-                        <li>Reduced error rates</li>
+                        <li>Docker</li>
+                        <li>Azure</li>
+                        <li>Linux</li>
+                        <li>CI/CD</li>
+                        <li>Git</li>
+                        <li>Bash</li>
+                        <li>System Architecture</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Testing & Methodologies</h3>
+                    <ul class="skill-list">
+                        <li>Unit Testing</li>
+                        <li>Integration Testing</li>
+                        <li>Functional Testing</li>
+                        <li>Agile & Scrum</li>
+                        <li>S.O.L.I.D Principles</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Soft Skills</h3>
+                    <ul class="skill-list">
+                        <li>Problem Solving</li>
+                        <li>Technical Documentation</li>
+                        <li>Stakeholder Communication</li>
+                        <li>Client Relations</li>
                     </ul>
                 </div>
             </div>
